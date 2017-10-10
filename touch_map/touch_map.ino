@@ -20,16 +20,12 @@ FatReader root;   // This holds the information for the filesystem on the card
 FatReader f;      // This holds the information for the file we're playing
 WaveHC wave;      // This is the only wave (audio) object, since we will only play one at a time
 
-uint8_t dirLevel; // indent level for file/dir names    (for prettyprinting)
-dir_t dirBuf;     // buffer for directory reads
-
-
 // CONFIG
-int controlPIN[3] { 9, 8, 7 };      // S0, S1, S2
+int controlPINS[3] { 9, 8, 7 };      // S0, S1, S2
 int readPIN = A0;
 int connectedPoints = 2;
 int setOnOff[2]{ LOW, HIGH };
-int triggerThreshold = 450;
+int triggerThreshold = 550;
 char *songs[2] { "TRACK001.WAV", "TRACK002.WAV" };
 
 // function definitions
@@ -47,7 +43,7 @@ void setup() {
   // MULTIPLEXER SETUP
   // set control pins to ouput mode
   for (int pin = 0; pin < 3; pin++) {
-    pinMode(controlPIN[pin], OUTPUT);
+    pinMode(controlPINS[pin], OUTPUT);
   }
   pinMode(readPIN, INPUT);
 
@@ -100,6 +96,7 @@ void loop() {
     bool trigger = readMultiplexer(calibrationPINS);
     if (trigger) {
       Serial.println("activated!");
+      playfile(songs[point]);
     }
   }
 
@@ -120,9 +117,10 @@ bool readMultiplexer(int calibrationPINS[3]) {
   Serial.print("Reading ");
   for (int i = 0; i < 3; i++) {
     Serial.print(calibrationPINS[i]);
-    digitalWrite(calibrationPINS[i], calibrationPINS[i]);
+    digitalWrite(controlPINS[i], calibrationPINS[i]);
   }
-
+  delay(100);
+  Serial.print(" - ");
   // check whether the pressure at the chosen point surpasses the threshold
   int pressure = analogRead(readPIN);
   Serial.println(pressure);
@@ -135,9 +133,9 @@ void playcomplete(char *name) {
   // plays a file from beginning to end
   // call our helper to find and play this name
   playfile(name);
-  while (wave.isplaying) {
-  // do nothing while its playing
-  }
+//  while (wave.isplaying) {
+//  // do nothing while its playing
+//  }
 }
 
 void playfile(char *name) {
