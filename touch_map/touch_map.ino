@@ -23,10 +23,12 @@ WaveHC wave;      // This is the only wave (audio) object, since we will only pl
 // CONFIG
 int controlPINS[3] { 9, 8, 7 };      // S0, S1, S2
 int readPIN = A0;
-int connectedPoints = 2;
+int connectedPoints = 4;
 int setOnOff[2]{ LOW, HIGH };
 int triggerThreshold = 550;
-char *songs[2] { "TRACK001.WAV", "TRACK002.WAV" };
+char *songs[4] { "TRACK001.WAV", "TRACK002.WAV", "TRACK003.WAV", "TRACK004.WAV" };
+int pollingRate = 500;
+bool verboseOutput = false;
 
 // function definitions
 void error(String msg);
@@ -95,14 +97,17 @@ void loop() {
     // read the touch point and trigger if needed
     bool trigger = readMultiplexer(calibrationPINS);
     if (trigger) {
-      Serial.println("activated!");
+      if (verboseOutput) {  
+        Serial.println("Activated point ");
+        Serial.println(point);
+      }
       playfile(songs[point]);
     }
   }
 
   // wait and reread the touch points
-  delay(1000);
-  Serial.println();
+  delay(pollingRate);
+  Serial.print('.');
 }
 
 void error(String msg) {
@@ -114,16 +119,16 @@ void error(String msg) {
 bool readMultiplexer(int calibrationPINS[3]) {
 
   // set the calibration pins
-  Serial.print("Reading ");
+  if (verboseOutput) { Serial.print("Reading "); }
   for (int i = 0; i < 3; i++) {
-    Serial.print(calibrationPINS[i]);
+    if (verboseOutput) { Serial.print(calibrationPINS[i]); }
     digitalWrite(controlPINS[i], calibrationPINS[i]);
   }
   delay(100);
-  Serial.print(" - ");
+  if (verboseOutput) { Serial.print(" - "); }
   // check whether the pressure at the chosen point surpasses the threshold
   int pressure = analogRead(readPIN);
-  Serial.println(pressure);
+  if (verboseOutput) { Serial.println(pressure); }
   if (pressure > triggerThreshold) { return true; }
   else { return false; }
 }
@@ -133,9 +138,6 @@ void playcomplete(char *name) {
   // plays a file from beginning to end
   // call our helper to find and play this name
   playfile(name);
-//  while (wave.isplaying) {
-//  // do nothing while its playing
-//  }
 }
 
 void playfile(char *name) {
