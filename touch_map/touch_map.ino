@@ -1,5 +1,5 @@
 // Authored By: Nicholas Whittaker
-// FIT1041: Research Project 1
+// FIT1041: Research Project
 // Tangible Interfaces for the Vision Impaired
 
 // WAVE SHIELD LIBRARY
@@ -27,7 +27,8 @@ int connectedPoints = 4;
 int setOnOff[2]{ LOW, HIGH };
 int triggerThreshold = 550;
 char *songs[4] { "TRACK001.WAV", "TRACK002.WAV", "TRACK003.WAV", "TRACK004.WAV" };
-int pollingRate = 500;
+int pollingRate = 1000;
+int readDelay = 100;
 bool verboseOutput = false;
 
 // function definitions
@@ -124,7 +125,8 @@ bool readMultiplexer(int calibrationPINS[3]) {
     if (verboseOutput) { Serial.print(calibrationPINS[i]); }
     digitalWrite(controlPINS[i], calibrationPINS[i]);
   }
-  delay(100);
+  // delay momentarilly to allow the multiplexer to reset
+  delay(readDelay);
   if (verboseOutput) { Serial.print(" - "); }
   // check whether the pressure at the chosen point surpasses the threshold
   int pressure = analogRead(readPIN);
