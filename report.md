@@ -20,7 +20,6 @@
 ## Context
 
 In the 21st Century, newer technologies and the internet have spurred to the spread of information, as well as continuing goal of making it more accessible to a global audience. For members of the low-vision community, the wide availability of smart-phones has provided greater access to digital information and easy to use methods of communication. However, an area still needing greater development is related more to graphical and physical information.
-<!-- TODO: PHONES FROM VISION AUSTRALIA -->
 
 Objects like the map of a public space, the layout of a building or the shape and appearance of a landmark are often best described by a tangible representation, a model that someone with a vision impairment or blindness can grasp, touch and interpret with their hands. Technologies such as 3D printers, which can generate models in a matter of hours by layering together cross sections of a digital object using plastic resin, and swell paper, which uses a combination of special ink and paper that expands under heat to create pages with raised sections for a user to guide their hand across.
 
@@ -28,10 +27,10 @@ While these approaches to succeed in communicating these graphical details, they
 
 Thus, working to develop a solution that overcomes this weakness and provides this often necessary context will help in the continuing development of accessible objects for those with vision impairments.
 
-![A map of a train station, printed on swell paper](https://i.imgur.com/U0qqtyd.jpg)
+![A map of a train station, printed on swell paper](./images/swell-paper.jpg)
 ##### A map of a train station, printed on swell paper
 
-![A print of the Sydney Opera house](https://i.imgur.com/8w20COG.jpg)
+![A print of the Sydney Opera house](./images/opera-house.jpg)
 ##### A print of the Sydney Opera House, those with vision impairments often struggle to interpret the 'sails' that make up the roof
 ###### Original image taken by Andrew Kallasmae
 
@@ -96,7 +95,7 @@ Using a high-quality printer, different patterns can be printed onto a map. For 
 
 With a wider array of plastics for 3D printing, more interactive objects can be made. The prime example of this is a model of a human heart. While with a harder plastic, a person with low vision might only be able to discern the basic shape of the muscle and the outlines of a major blood vessel, using a softer plastic would allow them to 'feel' how it would beat, and squeeze it like a muscle.
 
-![A 3D printed model of a human heart, made using a flexible plastic that be bent and squeezed](https://i.imgur.com/BOPVYhV.jpg)
+![A 3D printed model of a human heart, made using a flexible plastic that be bent and squeezed](./images/heart.jpg)
 ##### A 3D printed model of a human heart, made using a flexible plastic that be bent and squeezed
 
 Seeing as the primary focus of this prototype was to produce something that outputs audio, there were several methods to consider investigating, such as
@@ -119,21 +118,21 @@ However, their large size would mean they jut out of whatever object they were a
 
 With a special Arduino component, RFID tags can be read by an Arduino. While useful, its disadvantages outweigh its benefits. To operate, a unit to scan the tags would need to be carried around. It would have to contain the Arduino to handle logic, the RFID reader itself, a shield to handle audio output and a component to play emit audio, though headphones could suffice. Even then, the unit itself would be bulky and inconvenient to carry around, acting as a detriment. Since different tags, each with different sound files, would need to be used, the Arduino would need to be reprogrammed with each successive tag and audio file addition, as it cannot rely on an external entity, such as a server, to handle this data.
 
-![An RFID Reader, with its accompanying cards, connected to an Arduino](https://i.imgur.com/13PGcwX.jpg)
+![An RFID Reader, with its accompanying cards, connected to an Arduino](./images/rfid.jpg)
 ##### An RFID Reader, with its accompanying cards, connected to an Arduino
 
 #### Photoresistors
 
 A temporary consideration. They can be used to accurately detects changes in light levels, like a light tripwire. They are far too easy to activate unintentionally though and also require a breadboard to run through the Arduino.
 
-![An Arduino that can be played like a theremin by raising and lowering a hand over the photoresistor](https://i.imgur.com/yYSiGNL.jpg)
+![An Arduino that can be played like a theremin by raising and lowering a hand over the photoresistor](./images/photoresistor.jpg)
 ##### An Arduino that can be played like a theremin by raising and lowering a hand over the photoresistor
 
 #### Force Sensitive Resistors (FSRs)
 
 As greater pressure is applied, the resistance through these components increases, which can be used to trigger sounds in a similar manner to capacitive touch points. Given their size and cost, they cannot greatly discern differences in the force applied to them, but can differentiate between, a heavy, medium or light press, which is sufficient for acting as a trigger. Their small, thin size means they can be placed on a flat surface with a small amount of adhesive.
 
-![An FSR set up with an Arduino to produce a tone that raises in pitch as more pressure is applied](https://i.imgur.com/ZrjiVyo.jpg)
+![An FSR set up with an Arduino to produce a tone that raises in pitch as more pressure is applied](./images/square-fsr.jpg)
 ##### An FSR set up with an Arduino to produce a tone that raises in pitch as more pressure is applied
 
 
@@ -163,13 +162,11 @@ It should be noted that careful soldering is needed with particular components, 
 
 #### Program Logic
 
-A full copy of the code used for the Arduino can be found [here](https://github.com/NickelOz/fit1041/blob/master/touch_map/touch_map.ino).
-
-<!-- INCLUDE BASIC DIAGRAM OF WIRING ON PAPER -->
+A full copy of the code used for the Arduino can be found [here](./touch_map/touch_map.ino).
 
 To read and respond to stimuli, each of the FSRs was polled through the multiplexer, with a pressure threshold being used to trigger sound bites.
 
-![A pair of coin-sized FSRs connected to their Arduino](https://i.imgur.com/plwto7T.jpg)
+![A pair of coin-sized FSRs connected to their Arduino](./images/polling-fsrs.jpg)
 ##### A pair of coin-sized FSRs connected to their Arduino, polled using a multiplexer
 
 While this code was largely adapted from the available tutorials online, the key aim was to raise the majority of the configuration variables (polling interval, audio filenames, Arduino pins used for I/O) up to a global state, so that adjustments could easily be made to cater to an evolving design. This would allow more touch points to configured in future and to tune to the sensitivity of the map for different environments.
@@ -180,14 +177,14 @@ To build a functioning prototype, a map would need to be mounted on a sturdy boa
 
 To build the map, small slits were cut through a donated 3D print of a large building, similar to one that might be used as a guide in a public space. Using a small handheld saw, 1cm incisions were made into the map, through which FSRs could be inserted through to run underneath the model.
 
-![An FSR connected the Arduino, and inserted into the map](https://i.imgur.com/yuUyfVv.jpg)
+![An FSR connected the Arduino, and inserted into the map](./images/basic-map.jpg)
 ##### An FSR connected the Arduino, and inserted into the map by cutting a small slit to pass wiring through
 
 For clarity and visual appeal, the wiring of the Arduino was recut and taped down to run flat across the map.
 
 After connecting up a sound output device, in this case a small battery powered speaker, and loading the audio files onto the microSD card, the prototype was ready to present.
 
-![The finished map, with each FSR being through the multiplexer to trigger audio from the Wave shield](https://i.imgur.com/QfopIVd.jpg)
+![The finished map, with each FSR being through the multiplexer to trigger audio from the Wave shield](./images/final-map.jpg)
 ##### The finished map, with each FSR being through the multiplexer to trigger audio from the Wave shield
 
 
