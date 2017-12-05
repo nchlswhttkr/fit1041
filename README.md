@@ -20,6 +20,10 @@ Minor soldering skills
  - An Arduino-friendly audio shield, in this case Adafruit's Wave Shield ([ID #94](https://www.adafruit.com/product/94))
  - A lot of wiring and 10Kohm resistors
 
+## Report
+
+Can be found [here](https://github.com/NickelOz/fit1041/blob/master/report.md).
+
 ## Weekly Worklog
 
 [Week 2](https://github.com/NickelOz/fit1041/blob/master/worklog/WEEK2.MD)
