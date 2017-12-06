@@ -5,16 +5,19 @@
 ### Tangible Interfaces for the Vision Impaired
 ### Undertaken in partnership with Monash SensiLab and Monash University
 
+
+
 ## Contents
- - [Context](https://github.com/NickelOz/fit1041/blob/master/report.md#context)
- - [Aims / Goals](https://github.com/NickelOz/fit1041/blob/master/report.md#aims--goals)
- - [Timeline / Approach](https://github.com/NickelOz/fit1041/blob/master/report.md#timeline--approach)
- - [Design Choices](https://github.com/NickelOz/fit1041/blob/master/report.md#design-choices)
- - [Prototype Creation](https://github.com/NickelOz/fit1041/blob/master/report.md#prototype-creation)
- - [Evaluation](https://github.com/NickelOz/fit1041/blob/master/report.md#evaluation)
- - [Conclusion](https://github.com/NickelOz/fit1041/blob/master/report.md#conclusion)
- - [Reflection / Difficulties](https://github.com/NickelOz/fit1041/blob/master/report.md#reflection--difficulties)
- - [Credits / Acknowledgement / Thanks](https://github.com/NickelOz/fit1041/blob/master/report.md#credits--acknowledgements--thanks)
+ - [Context](#context)
+ - [Aims / Goals](#aims--goals)
+ - [Timeline / Approach](#timeline--approach)
+ - [Design Choices](#design-choices)
+ - [Prototype Creation](#prototype-creation)
+ - [Evaluation](#evaluation)
+ - [Conclusion](#conclusion)
+ - [Reflection / Difficulties](#reflection--difficulties)
+ - [Credits / Acknowledgement / Thanks](#credits--acknowledgements--thanks)
+
 
 
 ## Context
@@ -55,7 +58,12 @@ To evaluate, the following areas of the prototype should be examined, and discus
    - Extending this, does it provide this accessibility without disrupting the surface of the object?
  - Were there any other observations made over the course of the project that should be considered in future?
 
-In summary, this project should attempt to answer the questions *'How can 3D constructions of graphical models and maps be made more accessible for users with vision impairments? Can this be done without sacrificing the shape of the model itself?'*.
+In summary, this project should attempt to answer the questions
+
+*'How can 3D constructions of graphical models and maps be made more accessible for users with vision impairments?*
+
+*Can this be done without sacrificing the shape of the model itself?'*
+
 
 
 ## Timeline / Approach
@@ -83,13 +91,9 @@ These options can include purely physical approaches, such as
 
 These are fairly easy to print and affix to objects, braille stickers can be printed using special label makers. However, while they can be produced in a quick, affordable manner, they compromise the surface of an object by adding small bumps. Given their need to be small enough to be affixed to an object, their accompanying text must also be short, no longer than two short words. This is quite a severe limitation, and does not provide the possibility of communicating more than a basic title or very short description.
 
-<!-- TODO: IMAGE OF BRAILLE STICKERS -->
-
 #### Textiles/Patterns
 
 Using a high-quality printer, different patterns can be printed onto a map. For example, thin criss-crosses, thick diagonal lines or polka dot patterns can signify different buildings on a flat map, or rooms in a house. This is useful because it does not interrupt the overall shape of an object, and makes it easy to divide a terrain or a 3D space into separate areas. However, it also requires that each of these sections have a distinct pattern, so they can be discerned by touch, as well needing to be printed with a high-quality printer so that these patterns can be reproduced accurately while still keeping the surface 'flat', which tends to be expensive and beyond the access of the general community.
-
-<!-- TODO: IMAGE OF VISION AUSTRALIA CENTRE, LASER CUT -->
 
 #### Printing Materials
 
